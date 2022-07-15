@@ -20,7 +20,6 @@ struct sample {
   models: Transition.Model = new Transition.Model()
 
   aboutToAppear() {
-    this.models.setComponentColor(Color.Red)
   }
 
   build() {

@@ -21,22 +21,30 @@ export struct SimpleTransition {
   @State toggle: boolean = true
   model: Transition.Model= undefined
 
+  aboutToAppear() {
+    if (this.model == undefined || this.model == null) {
+      this.model = new Transition.Model()
+    }
+    if (this.toggle == undefined || this.toggle == null) {
+      this.toggle = true
+    }
+  }
+
   build() {
     Column({ space: 10 }) {
       Button(this.model.getText())
         .onClick(() => {
           this.toggle = !this.toggle;
-        }).backgroundColor(this.model.getButtonColor())
+        }).backgroundColor(this.model.getButtonColor()).position(this.model.getButtonPosition())
       Column()
         .size(this.model.getContainerSize())
         .backgroundColor(this.model.getContainerColor())
-        .position(this.model.getPosition())
+        .position(this.model.getContainerPosition())
         .borderWidth(this.model.getContainerBorderWidth());
       Column() {
         Circle()
           .fill(this.model.getComponentColor())
           .size(this.model.getComponentSize())
-          .borderWidth(this.model.getIsCircular() ? this.model.getComponentBorderWidth() : 0)
           .visibility(this.model.getIsCircular() ? Visibility.Visible : Visibility.Hidden)
       }
       .position(this.toggle ? this.model.getPosition() : this.model.getFinalPosition())

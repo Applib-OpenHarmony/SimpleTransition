@@ -17,6 +17,7 @@ namespace Transition {
   const DEFAULT_POSITION: Position = { x: '0vp', y: '50vp' }
   const DEFAULT_TEXT: string = 'Toggle'
   const DEFAULT_BUTTON_COLOR: ResourceColor = Color.Blue
+  const DEFAULT_BUTTON_POSITION: Position = { x: '0vp', y: '0vp' }
   const DEFAULT_CONTAINER_SIZE: SizeOptions = { width: '350vp', height: '65vp' }
   const DEFAULT_CONTAINER_COLOR: ResourceColor = Color.Gray
   const DEFAULT_CONTAINER_POSITION: Position = { x: '0vp', y: '50vp' }
@@ -35,6 +36,7 @@ namespace Transition {
     protected position: Position = DEFAULT_POSITION
     protected text: string = DEFAULT_TEXT
     protected buttonColor: ResourceColor= DEFAULT_BUTTON_COLOR
+    protected buttonPosition: Position= DEFAULT_BUTTON_POSITION
     protected containerSize: SizeOptions= DEFAULT_CONTAINER_SIZE
     protected containerColor: ResourceColor= DEFAULT_CONTAINER_COLOR
     protected containerPosition: Position= DEFAULT_CONTAINER_POSITION
@@ -43,10 +45,6 @@ namespace Transition {
     protected componentColor: ResourceColor= DEFAULT_COMPONENT_COLOR
     protected transitionTime: number= DEFAULT_TRANSITION_DURATION
     protected isCircular: boolean = DEFAULT_IS_CIRCULAR
-    protected finalPosition: Position = {
-      x: ((this.lenToNum(this.containerSize.width) - this.lenToNum(this.componentSize.width))),
-      y: this.position.y
-    }
     protected componentBorderWidth: number= DEFAULT_COMPONENT_BORDER_WIDTH
     protected stiffness: number = DEFAULT_SPRING_STIFFNESS
     protected mass: number = DEFAULT_SPRING_MASS
@@ -68,16 +66,28 @@ namespace Transition {
       return this.position
     }
 
+    setButtonPosition(position: Position): Model {
+      if (this.lenToNum(position.x) < 0 || this.lenToNum(position.y) < 0) {
+        throw new Error("Invalid size. Please provide a  valid input")
+      }
+      this.buttonPosition = (position != null && position != undefined) ? position : DEFAULT_BUTTON_POSITION
+      return this
+    }
+
+    getButtonPosition(): Position {
+      return this.buttonPosition
+    }
+
     setContainerPosition(position: Position): Model {
       if (this.lenToNum(position.x) < 0 || this.lenToNum(position.y) < 0) {
         throw new Error("Invalid size. Please provide a  valid input")
       }
-      this.position = (position != null && position != undefined) ? position : DEFAULT_CONTAINER_POSITION
+      this.containerPosition = (position != null && position != undefined) ? position : DEFAULT_CONTAINER_POSITION
       return this
     }
 
     getContainerPosition(): Position {
-      return this.position
+      return this.containerPosition
     }
 
     setText(text: string): Model {
@@ -114,14 +124,6 @@ namespace Transition {
 
     getComponentColor(): ResourceColor {
       return this.componentColor
-    }
-
-    setFinalPosition(finalPosition: Position): Model{
-      this.finalPosition = (finalPosition != null && finalPosition != undefined) ? finalPosition : {
-                                                                                                     x: (this.lenToNum(this.containerSize.width) - this.lenToNum(this.componentSize.width)),
-                                                                                                     y: this.position.y
-                                                                                                   }
-      return this
     }
 
     getFinalPosition(): Position{
