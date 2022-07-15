@@ -39,7 +39,7 @@ Transition model extends Model class and used to get access to all these methods
 | ` getTransitionDuration()`        | `number`          | returns duration of motion from one end to other during onclick   |
 | `setTransitionDuration(time: number)`        | `Model`          | sets duration of motion from one end to other during onclick    |
 | `getContainerBorderWidth()`        | `number`          |  returns border width of the container  |
-| `setComponentBorderWidth(width: number)`        | `Model`          |   sets border width of the container  |
+| `setContainerBorderWidth(width: number)`        | `Model`          |   sets border width of the container  |
 | ` getComponentSize()`        | `SizeOptions`          |  returns Component size   |
 | `setComponentSize(size: SizeOptions)`        | `Model`          |    sets Component size  |
 | ` getContainerSize()`        | `SizeOptions`          |  returns  Container  Size   |
@@ -54,6 +54,8 @@ Transition model extends Model class and used to get access to all these methods
 | ` setSpringDamping(damping: number)`        | `Model`          |   sets  damping of the spring  |
 | ` getIsCircular()`        | `boolean`          |  returns if the component is circular or not   |
 | `setIsCircular(isCircular: boolean)`        | `Model`          |   sets if the component is circular or not  |
+| `getConmponentBorderWidth()`        | `number`          |  returns border width of the component  |
+| `setComponentBorderWidth(width: number)`        | `Model`          |   sets border width of the component  |
 
 ## Model
 Transition Model
