@@ -35,7 +35,6 @@ Transition model extends Model class and used to get access to all these methods
 | `  getComponentColor()`        | `ResourceColor`          |   returns background color of the component |
 | `setComponentColor(color: ResourceColor): Model`        | `Model`          |   sets background color of the component  |
 | `  getFinalPosition()`        | `Position`          |    returns final positon after click|
-| `setFinalPosition(finalPosition: Position)`        | `Model`          |   sets final positon after click |
 | ` getTransitionDuration()`        | `number`          | returns duration of motion from one end to other during onclick   |
 | `setTransitionDuration(time: number)`        | `Model`          | sets duration of motion from one end to other during onclick    |
 | `getContainerBorderWidth()`        | `number`          |  returns border width of the container  |
