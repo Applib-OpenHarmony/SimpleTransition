@@ -20,6 +20,14 @@ import { Transition } from './CommonProperties'
 export struct SimpleTransition {
   @State toggle: boolean = true
   model: Transition.Model= undefined
+  aboutToAppear() {
+    if(this.model == undefined || this.model==null){
+      this.model =  new Transition.Model()
+    }
+    if(this.toggle == undefined || this.toggle ==null){
+      this.toggle = true
+    }
+  }
 
   aboutToAppear() {
     if (this.model == undefined || this.model == null) {
